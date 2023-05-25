@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import RegisterForm from './pages/registration/RegisterForm';
+import { ToastContainer} from 'react-toastify';
+import Login from './pages/login/Login';
+import Spinner from '../src/asset/Spinner-1s-200px.svg';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <div className='loader-wrapper'>
+    <img src={Spinner} alt="loader" />
+   </div>
+   <ToastContainer/>
+   <RegisterForm/>
+   <Login/>
+   </>
   );
 }
 
