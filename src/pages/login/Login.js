@@ -4,10 +4,11 @@ import '../registration/style.css';
 import authservice from '../../sevices/auth.service';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useAuthContext } from "../../context/auth.context";
  
  
 const Login = () => {
+    const authContext = useAuthContext();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     function handleSubmit(event) {
@@ -21,6 +22,7 @@ const Login = () => {
             setEmail('');
             setPassword('');
             toast.success("Successfully login!",{position: toast.POSITION.TOP_RIGHT});
+            authContext.setUser(res);
             
         }).catch((error) => { toast.error(error?.response?.data?.error ?? "Somthing went wrong"); });
     }
@@ -33,7 +35,7 @@ const Login = () => {
                 <TextField
                     type="email"
                     variant='outlined'
-                    color='secondary'
+                    color='primary'
                     label="Email"
                     onChange={e => setEmail(e.target.value)}
                     value={email}
@@ -44,7 +46,7 @@ const Login = () => {
                 <TextField
                     type="password"
                     variant='outlined'
-                    color='secondary'
+                    color='primary'
                     label="Password"
                     onChange={e => setPassword(e.target.value)}
                     value={password}
@@ -53,7 +55,7 @@ const Login = () => {
                     sx={{mb: 4}}
                 />
                 
-                <Button variant="outlined" color="secondary" type="submit">Login</Button>
+                <Button variant="outlined" color="primary" type="submit">Login</Button>
             </form>
             </Container>
         </React.Fragment>
