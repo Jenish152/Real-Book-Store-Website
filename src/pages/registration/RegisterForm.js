@@ -4,6 +4,7 @@ import './style.css';
 import authservice from '../../sevices/auth.service';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
  
  
@@ -13,6 +14,7 @@ const RegisterForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('')
+    const navigate=useNavigate();
     function handleSubmit(event) {
         
         event.preventDefault();
@@ -31,6 +33,7 @@ const RegisterForm = () => {
             setRole('');
             
             toast.success("Successfully registred!",{position: toast.POSITION.TOP_RIGHT});
+            navigate('/login');
             
         }).catch((error) => { toast.error(error?.response?.data?.error ?? "Somthing went wrong"); });
     }
@@ -38,13 +41,13 @@ const RegisterForm = () => {
     return (
         <React.Fragment>
             <Container>
-            <h2 className='heading'>Register Form</h2>
+            <h2 color='primary' className='heading'>Register Form</h2>
             <form onSubmit={handleSubmit} action="/login" >
                 <Stack spacing={2} direction="row" sx={{marginBottom: 4}}>
                     <TextField
                         type="text"
                         variant='outlined'
-                        color='secondary'
+                        color='primary'
                         label="First Name"
                         onChange={e => setFirstName(e.target.value)}
                         value={firstName}
@@ -54,7 +57,7 @@ const RegisterForm = () => {
                     <TextField
                         type="text"
                         variant='outlined'
-                        color='secondary'
+                        color='primary'
                         label="Last Name"
                         onChange={e => setLastName(e.target.value)}
                         value={lastName}
@@ -65,7 +68,7 @@ const RegisterForm = () => {
                 <TextField
                     type="email"
                     variant='outlined'
-                    color='secondary'
+                    color='primary'
                     label="Email"
                     onChange={e => setEmail(e.target.value)}
                     value={email}
@@ -73,7 +76,7 @@ const RegisterForm = () => {
                     required
                     sx={{mb: 4}}
                 />
-                <FormControl color='secondary' variant='outlined' sx={{mb: 4}} required fullWidth>
+                <FormControl color='primary' variant='outlined' sx={{mb: 4}} required fullWidth>
                          <InputLabel id="demo-simple-select-label">Role</InputLabel>   
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -91,7 +94,7 @@ const RegisterForm = () => {
                 <TextField
                     type="password"
                     variant='outlined'
-                    color='secondary'
+                    color='primary'
                     label="Password"
                     onChange={e => setPassword(e.target.value)}
                     value={password}
@@ -100,7 +103,7 @@ const RegisterForm = () => {
                     sx={{mb: 4}}
                 />
                 
-                <Button variant="outlined" color="secondary" type="submit">Register</Button>
+                <Button variant="outlined" color="primary" type="submit">Register</Button>
             </form>
             </Container>
         </React.Fragment>
