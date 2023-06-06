@@ -41,9 +41,18 @@ const update = async (data) => {
 };
 
 const updateProfile = async (data) => {
+  const dataa={"id": data.id,
+  "email": data.email,
+  "firstName": data.firstName,
+  "lastName": data.lastName,
+  "roleId": data.roleId,
+  "role": data.role,
+  "password": data.password};
   const url = `${ENDPOINT}`;
-  return request.put(url, data).then((res) => {
-    return res;
+  console.log(dataa);
+  return request.put(url, dataa).then((res) => {
+    console.log(res);
+    return res.result;
   });
 };
 

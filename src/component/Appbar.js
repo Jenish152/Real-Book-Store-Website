@@ -16,7 +16,7 @@ export const Appbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary sticky">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">
+          <Link className="navbar-brand" to="/">
             Navbar
           </Link>
           <button
@@ -32,11 +32,7 @@ export const Appbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/">
-                  BookListing
-                </Link>
-              </li>
+              
               <li className="nav-item">
                 <Link className="nav-link" to="/book">
                   Book
@@ -52,22 +48,38 @@ export const Appbar = () => {
                   Users
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/update-profile">
+                  Upadte-Profile
+                </Link>
+              </li>
             </ul>
-            <div className="input-group">
-  <input type="search" onChange={e => setseearchval(e.target.value)} className="form-control rounded input-sm ml-1" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            {/* <div className="input-group" >
+  <input type="search" onChange={e => setseearchval(e.target.value)} width={"100px"} className="form-control rounded input-sm ml-1" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <button type="button" onClick={handlesearch} className="btn btn-outline-dark">search</button>
-</div>
+</div> */}
             <form className="d-flex">
             {authContext.user.id ? (
+              <>
               <button
               type="button"
               onClick={() => {
-               authContext.signOut();
+                authContext.signOut();
+              }}
+              className="btn btn-outline-dark m-2"
+              >
+              LogOut
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+               navigate("/cart");
               }}
               className="btn btn-outline-dark m-2"
             >
-              LogOut
+              CART
             </button>
+              </>
             ):<><button
             type="button"
             onClick={() => {

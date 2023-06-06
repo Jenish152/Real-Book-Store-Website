@@ -7,6 +7,7 @@ import { Appbar } from "./component/Appbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Booklisting from "./pages/home/Booklisting";
 import { AuthWrapper } from "./context/auth.context";
+import { CartWrapper } from "./context/cart.context";
 import { useAuthContext } from "./context/auth.context";
 import { Navigate } from "react-router-dom";
 import { RoutePaths } from "./utils/enum";
@@ -17,6 +18,8 @@ import Categories from "./pages/category/Categories";
 import EditCategory from "./pages/category/editCategory";
 import Users from "./pages/user/Users";
 import EditUser from "./pages/user/editUser/Edituser";
+import UpdateProfile from "./pages/update-profile/Updateprofile";
+import Cart from "./pages/cart/Cart";
 function App() {
   const authContext=useAuthContext();
   const Redirect = <Navigate to={RoutePaths.Login} />;
@@ -30,6 +33,9 @@ function App() {
       <ToastContainer />
       <Router>
         <AuthWrapper>
+          <CartWrapper>
+
+          
           <Appbar />
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -38,6 +44,8 @@ function App() {
             <Route exact path="/book" element={<Book />} />
             <Route exact path="/category" element={<Categories />} />
             <Route exact path="/user" element={<Users />} />
+            <Route exact path="/update-profile" element={<UpdateProfile />} />
+            <Route exact path="/cart" element={<Cart />} />
             <Route
         exact
         path="/edit-book/:id"
@@ -65,6 +73,7 @@ function App() {
       />
 
           </Routes>
+          </CartWrapper>
         </AuthWrapper>
       </Router>
     </>

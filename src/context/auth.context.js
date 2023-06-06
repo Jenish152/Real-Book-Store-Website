@@ -19,7 +19,7 @@ const initialState = {
     signOut: () => { },
 };
 
-const authContext = createContext(initialState);
+export const authContext = createContext(initialState);
 
 export const AuthWrapper = ({ children }) => {
     const [user, _setUser] = useState(initialUserValue);

@@ -148,7 +148,7 @@ const Book = () => {
                 </TableRow>
               )}
               <TablePagination
-    rowsPerPageOptions={[5, 10, 25]}
+    rowsPerPageOptions={[5,8, 10, 25]}
     component="div"
     count={bookRecord.totalItems}
     rowsPerPage={filters.pageSize || 0}
