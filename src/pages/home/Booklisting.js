@@ -50,7 +50,7 @@ const Booklisting=()=>{
         const fetchData=async()=>{
             res=await bookServices.getAllBooks();
             setAllBooks(res.result)
-            console.log("bookx",books);
+            
             setPage(Math.ceil(res.result.length/5))
         }
        
@@ -88,15 +88,14 @@ const Booklisting=()=>{
 {books.length!==0? books.map((book)=>{
     return(
     <>
-    <div className="card col-4">
+    <div className="card col-4" key={book.id}>
   <img src={book.base64image} className="card-img-top" alt="..." height="200px"/>
   <div className="card-body">
     <h5 className="card-title">{book.name.substring(0,18)+"..."}</h5>
     <span className="category">{book.category}</span>
     <p className="card-text">{ book.description.substring(0,30)}</p>
     <p className="price">MRP. {book.price}</p>
-    <button className="btn btn-outline-primary" style={{position:"fixed",
-    }}><NavLink  to="/cart" color="primary" style={{textDecoration:"none"}}>Add to Cart</NavLink></button>
+    <button className="btn btn-outline-primary"><NavLink  to="/cart" color="primary" style={{textDecoration:"none"}}>Add to Cart</NavLink></button>
   </div>
 </div>
     

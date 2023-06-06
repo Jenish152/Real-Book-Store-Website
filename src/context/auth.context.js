@@ -29,8 +29,8 @@ export const AuthWrapper = ({ children }) => {
     const setUser = (user) => {
         localStorage.setItem(shared.localStorageKeys.USER, JSON.stringify(user));
         _setUser(user);
-        window.location.reload();
-       navigate(RoutePaths.home);
+        // window.location.reload();
+        navigate(RoutePaths.home);
     };
 
     const signOut = () => {
@@ -40,13 +40,11 @@ export const AuthWrapper = ({ children }) => {
     };
 
     useEffect(() => {
-        const cache = JSON.parse(localStorage.getItem(shared.localStorageKeys.USER)) || initialUserValue;
-        console.log("id::::",cache.result.id);
-        if (cache.result.id) {
-            console.log("local storage");
-            console.log(cache.result);
-            _setUser(cache.result);
-            console.log("userr",user.firstName);
+        const cache = (JSON.parse(localStorage.getItem(shared.localStorageKeys.USER))) || initialUserValue;
+        console.log(cache);
+        if (cache.id) {
+            _setUser(cache);
+            // console.log(user);
              navigate(RoutePaths.home);
         } else {
             navigate(RoutePaths.login);

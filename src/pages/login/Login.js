@@ -5,6 +5,7 @@ import authservice from '../../sevices/auth.service';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuthContext } from "../../context/auth.context";
+import { NavLink } from 'react-router-dom';
  
  
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
             setEmail('');
             setPassword('');
             toast.success("Successfully login!",{position: toast.POSITION.TOP_RIGHT});
-            authContext.setUser(res);
+            authContext.setUser(res.result);
             
         }).catch((error) => { toast.error(error?.response?.data?.error ?? "Somthing went wrong"); });
     }
@@ -56,6 +57,7 @@ const Login = () => {
                 />
                 
                 <Button variant="outlined" color="primary" type="submit">Login</Button>
+                <p className='mt-2'>IF You Are Not Registres So Plz First Register Your Self! <NavLink  to="/register" color="primary">Click Here</NavLink></p>
             </form>
             </Container>
         </React.Fragment>

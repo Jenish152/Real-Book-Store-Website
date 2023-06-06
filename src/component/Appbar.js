@@ -14,7 +14,7 @@ export const Appbar = () => {
   }
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary sticky">
         <div className="container-fluid">
           <Link className="navbar-brand" to="#">
             Navbar
@@ -38,18 +38,18 @@ export const Appbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  Link
+                <Link className="nav-link" to="/book">
+                  Book
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  Link
+                <Link className="nav-link" to="/category">
+                  Categories
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  Link
+                <Link className="nav-link" to="/user">
+                  Users
                 </Link>
               </li>
             </ul>
@@ -58,7 +58,7 @@ export const Appbar = () => {
   <button type="button" onClick={handlesearch} className="btn btn-outline-dark">search</button>
 </div>
             <form className="d-flex">
-            {authContext.user.id && (
+            {authContext.user.id ? (
               <button
               type="button"
               onClick={() => {
@@ -68,9 +68,24 @@ export const Appbar = () => {
             >
               LogOut
             </button>
-            )}
+            ):<><button
+            type="button"
+            onClick={() => {
+              navigate("/login");
+            }}
+            className="btn btn-outline-dark m-2"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate("/register")}
+            className="btn btn-outline-dark m-2"
+          >
+            Register
+          </button></>}
 
-             {!(authContext.user.id) && (
+             {/* {!authContext.user.id && (
               <><button
               type="button"
               onClick={() => {
@@ -87,7 +102,7 @@ export const Appbar = () => {
             >
               Register
             </button></>
-            )}
+            )} */}
               
             </form>
           </div>

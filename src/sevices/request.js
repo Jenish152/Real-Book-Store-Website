@@ -34,28 +34,24 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   async (response) => {
     const { data } = response;
-    console.log("resssss");
-    console.log("responseeee,", response);
     removeRequest(response.config.url);
     if (data?.code && data?.code !== 200) {
       toast.error(
         response.data.error ?? "Somthing went wrong. Please try again!"
       );
-      console.log("error1111");
+      
       return Promise.reject(new Error(data?.error || "Error"));
     } else {
       return Promise.resolve(response.data);
     }
   },
   (error) => {
-    console.log(error);
-    console.log("errorxxxxxxxxxxxx");
+    console.log("erorrr",error);
     removeRequest(error.config.url);
     return Promise.reject(error);
   }
 );
 function showLoader() {
-  console.log("loader");
   document.body.classList.add("loader-open");
 }
 function hideLoader() {

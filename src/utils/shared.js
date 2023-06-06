@@ -8,12 +8,12 @@ const NavigationItems = [
     {
         name: "Users",
         route: RoutePaths.user,
-        access: [Role.Admin, Role.Seller],
+        access: [Role.Admin],
     },
     {
         name: "Categories",
         route: RoutePaths.category,
-        access: [Role.Admin],
+        access: [Role.Admin]
     },
     {
         name: "Books",
@@ -28,8 +28,6 @@ const NavigationItems = [
 ];
 
 const hasAccess = ({ pathname, user }) => {
-    console.log(pathname);
-    console.log(user);
     const navItem = NavigationItems.find((navItem) =>
         pathname.includes(navItem.route)
     );
@@ -40,8 +38,7 @@ const hasAccess = ({ pathname, user }) => {
         );
     }
     return true;
-};
-
+  };
 export default {
     hasAccess,
     localStorageKeys,

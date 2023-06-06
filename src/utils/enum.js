@@ -7,6 +7,8 @@ export const RoutePaths = {
     user: "/user",
     category: "/category",
     book: "/book",
+    addbook:"/add-book",
+    editbook:"/edit-book/:id",
     updateprofile: "/update-profile",
     edituser: "/edit-user/:id",
   };
